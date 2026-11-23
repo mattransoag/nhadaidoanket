@@ -249,10 +249,15 @@ body{font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;text-re
  .ndk-portal-choice .ndk-choice-description{font-size:14px!important}
  .ndk-headline-accent{white-space:normal;text-wrap:balance}
 }
+
+/* Fixed orphaned location name in page introduction */
+.ndk-portal-summary{display:flex;flex-direction:column;align-items:center;gap:3px;max-width:900px!important;margin:0 auto!important;font-size:clamp(14px,1.2vw,16px)!important;line-height:1.65!important;text-align:center}
+.ndk-portal-summary span{display:block;max-width:100%;overflow-wrap:normal;word-break:normal;text-wrap:pretty}
+@media(max-width:600px){.ndk-portal-summary{font-size:14px!important;gap:5px;padding:0 5px}}
 </style></head><body>
 <header class="official-hero" role="banner"><div class="official-hero-inner"><img id="brandLogo" class="official-logo brand-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bi%E1%BB%83u%20tr%C6%B0ng%20M%E1%BA%B7t%20tr%E1%BA%ADn%20T%E1%BB%95%20qu%E1%BB%91c%20Vi%E1%BB%87t%20Nam.svg" alt="Biểu trưng Mặt trận Tổ quốc Việt Nam"><h1 class="official-title">ỦY BAN MẶT TRẬN TỔ QUỐC VIỆT NAM<span>TỈNH AN GIANG</span></h1><p class="official-subtitle">HỆ THỐNG QUẢN LÝ NHÀ ĐẠI ĐOÀN KẾT</p></div></header><main class="shell">
 <section id="ndkWelcome" class="ndk-portal" aria-labelledby="ndkWelcomeHeading">
-<div class="ndk-portal-top"><span class="ndk-portal-kicker">NỀN TẢNG QUẢN LÝ AN SINH XÃ HỘI</span><h2 id="ndkWelcomeHeading"><span class="ndk-headline-line">Chung tay xây dựng</span><span class="ndk-headline-line ndk-headline-accent">mái ấm đại đoàn kết</span></h2><p>Một hệ thống thống nhất để quản lý hồ sơ hỗ trợ nhà ở, nguồn kinh phí và tiến độ thực hiện trên địa bàn tỉnh An Giang.</p></div>
+<div class="ndk-portal-top"><span class="ndk-portal-kicker">NỀN TẢNG QUẢN LÝ AN SINH XÃ HỘI</span><h2 id="ndkWelcomeHeading"><span class="ndk-headline-line">Chung tay xây dựng</span><span class="ndk-headline-line ndk-headline-accent">mái ấm đại đoàn kết</span></h2><p class="ndk-portal-summary"><span>Quản lý thống nhất hồ sơ hỗ trợ nhà ở, nguồn kinh phí và tiến độ thực hiện.</span><span>Triển khai trên địa bàn tỉnh An Giang.</span></p></div>
 <div class="ndk-portal-choices">
 <button class="ndk-portal-choice ndk-portal-admin" type="button" onclick="ndkNavigate('admin')"><span class="ndk-choice-top"><span class="ndk-choice-icon" aria-hidden="true">⚙</span><span class="ndk-choice-number">01 / QUẢN TRỊ</span></span><span class="ndk-choice-title">Quản trị hệ thống</span><span class="ndk-choice-description">Cấp tài khoản, phân quyền theo đơn vị, phê duyệt hồ sơ, thống kê và theo dõi hoạt động.</span><span class="ndk-choice-footer">Dành cho quản trị viên <span class="ndk-choice-arrow" aria-hidden="true">↗</span></span></button>
 <button class="ndk-portal-choice ndk-portal-records" type="button" onclick="ndkNavigate('records')"><span class="ndk-choice-top"><span class="ndk-choice-icon" aria-hidden="true">⌂</span><span class="ndk-choice-number">02 / HỒ SƠ</span></span><span class="ndk-choice-title">Tiếp nhận hồ sơ</span><span class="ndk-choice-description">Đăng nhập bằng tài khoản được cấp để lập mới, tra cứu, cập nhật hồ sơ và ảnh minh chứng.</span><span class="ndk-choice-footer">Dành cho cán bộ được cấp quyền <span class="ndk-choice-arrow" aria-hidden="true">↗</span></span></button>
