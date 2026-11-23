@@ -137,27 +137,40 @@ body{background:#f3f5f8}
 #app>.panel>.toolbar{border-bottom:1px solid #eee0d8;background:#fff;padding:16px 20px}
 #app>.panel>.toolbar label{font-weight:700;font-size:.85rem;color:#334155}
 @media(max-width:760px){#login.loginwrap{grid-template-columns:1fr;min-height:auto}#login .login-art{min-height:145px;padding:20px}#login .art-message h2{font-size:1.55rem;margin:9px 0}#login .art-top{margin-bottom:8px}#login .login-form-panel{padding:22px} .ndk-records-head{flex-direction:column;align-items:flex-start;padding:18px}.ndk-records-head button{width:100%}}
+
+/* Only two entry points – administration or authorized records intake */
+.ndk-tabs.ndk-tabs-two{justify-content:center;gap:34px;max-width:960px}
+.ndk-tabs.ndk-tabs-two button{font-size:.95rem;padding:19px 24px 14px}
+.ndk-tabs.ndk-tabs-two button:last-child{margin-left:0!important}
+.ndk-entry{max-width:1060px;margin:18px auto 38px}
+.ndk-entry-intro{text-align:center;padding:14px 16px 22px}
+.ndk-entry-kicker{letter-spacing:.16em;color:#b02424;font-size:.72rem;font-weight:900}
+.ndk-entry-intro h2{font-size:clamp(1.8rem,3.3vw,2.65rem);margin:10px 0;color:#202d43}
+.ndk-entry-intro p{font-size:.95rem;color:#607086;line-height:1.7;max-width:700px;margin:0 auto}
+.ndk-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.ndk-entry-card{text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:13px;padding:34px;background:#fff!important;border:1px solid #ebded7!important;box-shadow:0 12px 35px #7b263018!important;border-radius:20px!important;color:#1c293b!important;min-height:310px;transition:transform .2s,box-shadow .2s}
+.ndk-entry-card:hover{transform:translateY(-3px);box-shadow:0 19px 45px #7b263024!important}
+.ndk-entry-icon{background:linear-gradient(135deg,#aa1c25,#eb4512);color:#fff;font-size:2rem;display:grid;place-items:center;width:68px;height:68px;border-radius:17px}
+.ndk-entry-title{font-size:1.5rem;font-weight:900;color:#233147}
+.ndk-entry-desc{line-height:1.68;color:#64748b;font-size:.94rem}
+.ndk-entry-action{color:#ab2626;font-weight:850;margin-top:auto}
+.ndk-entry-note{text-align:center;color:#67778a;font-size:.82rem;line-height:1.65;margin:22px 0}
+@media(max-width:700px){.ndk-entry-grid{grid-template-columns:1fr;gap:12px}.ndk-entry-card{min-height:215px;padding:23px}.ndk-tabs.ndk-tabs-two{gap:0}.ndk-tabs.ndk-tabs-two button{font-size:.78rem;padding:13px 10px}}
 </style></head><body>
 <header class="official-hero" role="banner"><div class="official-hero-inner"><img id="brandLogo" class="official-logo brand-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bi%E1%BB%83u%20tr%C6%B0ng%20M%E1%BA%B7t%20tr%E1%BA%ADn%20T%E1%BB%95%20qu%E1%BB%91c%20Vi%E1%BB%87t%20Nam.svg" alt="Biểu trưng Mặt trận Tổ quốc Việt Nam"><h1 class="official-title">ỦY BAN MẶT TRẬN TỔ QUỐC VIỆT NAM<span>TỈNH AN GIANG</span></h1><p class="official-subtitle">HỆ THỐNG QUẢN LÝ NHÀ ĐẠI ĐOÀN KẾT</p></div></header><div class="official-account"><div class="official-account-inner"><span class="official-system">🏠 NỀN TẢNG QUẢN TRỊ SỐ · AN GIANG</span><div class="official-user"><span id="who">Chưa đăng nhập</span><button id="logoutBtn" class="logout hidden" onclick="logout()">Đăng xuất / Chuyển tài khoản</button></div></div></div>
-<div class="ndk-tabs-wrap"><nav class="ndk-tabs" aria-label="Chức năng hệ thống Nhà Đại đoàn kết"><button type="button" data-view="home" aria-current="page" onclick="ndkNavigate('home')">⌂ TRANG CHỦ</button><button type="button" data-view="records" onclick="ndkNavigate('records')">▤ TIẾP NHẬN & TRA CỨU HỒ SƠ</button><button type="button" data-view="admin" onclick="ndkNavigate('admin')">⚙ QUẢN TRỊ</button><button type="button" data-view="login" class="ndk-login-tab" onclick="ndkNavigate('login')">⇥ ĐĂNG NHẬP</button></nav></div>
+<div class="ndk-tabs-wrap"><nav class="ndk-tabs ndk-tabs-two" aria-label="Chọn khu vực hệ thống">
+<button type="button" data-view="admin" onclick="ndkNavigate('admin')">⚙ QUẢN TRỊ HỆ THỐNG</button>
+<button type="button" data-view="records" onclick="ndkNavigate('records')">▤ TIẾP NHẬN HỒ SƠ</button>
+</nav></div>
 <main class="shell">
-<section id="ndkWelcome" class="ndk-welcome" aria-labelledby="ndkWelcomeHeading">
- <div class="ndk-welcome-main">
-  <div class="ndk-welcome-copy"><span class="ndk-welcome-tag">NỀN TẢNG QUẢN LÝ AN SINH XÃ HỘI</span>
-   <h2 id="ndkWelcomeHeading">Kết nối nguồn lực,<br><span>vun đắp mái ấm đại đoàn kết</span></h2>
-   <p>Hệ thống hỗ trợ quản lý hồ sơ nhà Đại đoàn kết, theo dõi nguồn kinh phí, tiến độ thi công và công tác nghiệm thu, bàn giao trên địa bàn tỉnh An Giang.</p>
-   <div class="ndk-welcome-actions"><button type="button" class="ndk-primary" onclick="ndkNavigate('login')">Đăng nhập quản trị <span aria-hidden="true">→</span></button><button type="button" class="ndk-secondary" onclick="ndkShowGuide()">Tìm hiểu chức năng</button></div>
-  </div>
-  <div class="ndk-welcome-graphic" aria-hidden="true"><div class="ndk-graphic-ring"></div><div class="ndk-house-mark">⌂</div><div class="ndk-graphic-text">ĐẠI ĐOÀN KẾT<br><small>Chung tay vì cộng đồng</small></div></div>
- </div>
- <div class="ndk-welcome-features" id="ndkFeatureList">
-  <article><span>01</span><h3>Hồ sơ tập trung</h3><p>Theo dõi thông tin và tình trạng từng hồ sơ theo đơn vị được phân quyền.</p></article>
-  <article><span>02</span><h3>Kinh phí minh bạch</h3><p>Tổng hợp nguồn hỗ trợ, kinh phí đã cấp và kết quả giải ngân.</p></article>
-  <article><span>03</span><h3>Tiến độ & minh chứng</h3><p>Quản lý hình ảnh theo giai đoạn khảo sát, thi công, nghiệm thu, bàn giao.</p></article>
- </div>
- <div class="ndk-welcome-secure"><span aria-hidden="true">🔒</span> Dữ liệu và thao tác nghiệp vụ chỉ dành cho tài khoản đã được cấp quyền; Google Apps Script xử lý lưu trữ qua Sheets và Drive.</div>
+<section id="ndkWelcome" class="ndk-entry" aria-labelledby="ndkWelcomeHeading">
+<div class="ndk-entry-intro"><span class="ndk-entry-kicker">HỆ THỐNG QUẢN LÝ NHÀ ĐẠI ĐOÀN KẾT</span><h2 id="ndkWelcomeHeading">Chọn khu vực làm việc</h2><p>Tài khoản và mật khẩu do quản trị viên cấp. Mỗi cán bộ chỉ truy cập dữ liệu và chức năng theo quyền được phân công.</p></div>
+<div class="ndk-entry-grid">
+<button type="button" class="ndk-entry-card" onclick="ndkNavigate('admin')"><span class="ndk-entry-icon" aria-hidden="true">⚙</span><span class="ndk-entry-title">Quản trị hệ thống</span><span class="ndk-entry-desc">Quản lý tài khoản, cấp quyền, kiểm duyệt hồ sơ, báo cáo và nhật ký.</span><span class="ndk-entry-action">Dành cho quản trị viên <span aria-hidden="true">→</span></span></button>
+<button type="button" class="ndk-entry-card" onclick="ndkNavigate('records')"><span class="ndk-entry-icon" aria-hidden="true">⌂</span><span class="ndk-entry-title">Tiếp nhận hồ sơ</span><span class="ndk-entry-desc">Cán bộ được cấp tài khoản đăng nhập để thêm mới, tìm kiếm, cập nhật và theo dõi hồ sơ được phép.</span><span class="ndk-entry-action">Dành cho cán bộ được cấp quyền <span aria-hidden="true">→</span></span></button>
+</div><p class="ndk-entry-note">🔒 Dữ liệu xử lý qua Google Apps Script, lưu trên Google Sheets và Google Drive; không lưu hồ sơ hộ dân trong GitHub công khai.</p>
 </section>
-<section id="login" class="loginwrap hidden" aria-labelledby="loginHeading"><div class="login-art"><div class="art-top"><img id="loginLogo" class="login-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bi%E1%BB%83u%20tr%C6%B0ng%20M%E1%BA%B7t%20tr%E1%BA%ADn%20T%E1%BB%95%20qu%E1%BB%91c%20Vi%E1%BB%87t%20Nam.svg" alt="Biểu trưng Mặt trận Tổ quốc Việt Nam"><span id="defaultEmblem" class="art-emblem hidden" aria-hidden="true"></span><span>ỦY BAN MTTQ VIỆT NAM<br><strong>TỈNH AN GIANG</strong></span></div><div class="art-message"><span class="art-tag">KHÔNG GIAN LÀM VIỆC SỐ</span><h2>Một tài khoản.<br>Một hệ thống.<br>Quản lý tập trung.</h2><p>Tiếp nhận, tra cứu hồ sơ, theo dõi kinh phí và hình ảnh Nhà Đại đoàn kết theo quyền được cấp.</p></div><div class="art-bottom">Bảo mật dữ liệu · Phân quyền theo đơn vị</div></div><div class="login-form-panel"><div class="login-kicker">CỔNG QUẢN TRỊ NỘI BỘ</div><h2 id="loginHeading">Đăng nhập tài khoản</h2><p class="login-intro">Cán bộ được cấp tài khoản và mật khẩu có thể tự đăng nhập để tiếp nhận, tra cứu và quản lý hồ sơ theo quyền được giao.</p><form id="loginForm" onsubmit="event.preventDefault();loginInternal()"><label for="loginUsername">Tên đăng nhập</label><input id="loginUsername" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Nhập tên đăng nhập" required><label for="loginPassword">Mật khẩu</label><div class="password-field"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required><button class="eye-btn" type="button" aria-label="Hiện hoặc ẩn mật khẩu" onclick="togglePassword()">◉</button></div><p id="loginStatus" role="status" aria-live="polite">Vui lòng nhập tài khoản và mật khẩu.</p><button id="loginSubmit" class="login-submit" type="submit">Đăng nhập <span aria-hidden="true">→</span></button></form><div class="login-note">🔒 Chỉ tài khoản được cấp quyền mới xem và cập nhật dữ liệu</div><button type="button" class="ndk-back-home" onclick="ndkNavigate('home')">← Quay về trang chủ</button></div></section><div id="error" class="notice hidden"></div><section id="app" class="hidden"><div class="sectionhead"><div><span class="eyebrow">TRUNG TÂM ĐIỀU HÀNH</span><h2>Tổng quan nhà Đại đoàn kết</h2><p class="muted">Quản lý hồ sơ, nguồn kinh phí và tiến độ trên một nền tảng.</p></div><span class="live">● Hệ thống trực tuyến</span></div><div class="stats"><div class="card"><span class="muted">Tổng hồ sơ</span><b id="sTotal">0</b></div><div class="card"><span class="muted">Đang thi công</span><b id="sBuild">0</b></div><div class="card"><span class="muted">Đã bàn giao</span><b id="sDone">0</b></div><div class="card"><span class="muted">Tổng kinh phí</span><b id="sMoney">0</b></div></div>
+<section id="login" class="loginwrap hidden" aria-labelledby="loginHeading"><div class="login-art"><div class="art-top"><img id="loginLogo" class="login-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bi%E1%BB%83u%20tr%C6%B0ng%20M%E1%BA%B7t%20tr%E1%BA%ADn%20T%E1%BB%95%20qu%E1%BB%91c%20Vi%E1%BB%87t%20Nam.svg" alt="Biểu trưng Mặt trận Tổ quốc Việt Nam"><span id="defaultEmblem" class="art-emblem hidden" aria-hidden="true"></span><span>ỦY BAN MTTQ VIỆT NAM<br><strong>TỈNH AN GIANG</strong></span></div><div class="art-message"><span class="art-tag">KHÔNG GIAN LÀM VIỆC SỐ</span><h2>Một tài khoản.<br>Một hệ thống.<br>Quản lý tập trung.</h2><p>Tiếp nhận, tra cứu hồ sơ, theo dõi kinh phí và hình ảnh Nhà Đại đoàn kết theo quyền được cấp.</p></div><div class="art-bottom">Bảo mật dữ liệu · Phân quyền theo đơn vị</div></div><div class="login-form-panel"><div class="login-kicker" id="ndkLoginKicker">ĐĂNG NHẬP TÀI KHOẢN ĐƯỢC CẤP</div><h2 id="loginHeading">Đăng nhập tài khoản</h2><p class="login-intro" id="ndkLoginIntro">Nhập tài khoản và mật khẩu do quản trị viên cung cấp để tiếp tục.</p><form id="loginForm" onsubmit="event.preventDefault();loginInternal()"><label for="loginUsername">Tên đăng nhập</label><input id="loginUsername" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Nhập tên đăng nhập" required><label for="loginPassword">Mật khẩu</label><div class="password-field"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required><button class="eye-btn" type="button" aria-label="Hiện hoặc ẩn mật khẩu" onclick="togglePassword()">◉</button></div><p id="loginStatus" role="status" aria-live="polite">Vui lòng nhập tài khoản và mật khẩu.</p><button id="loginSubmit" class="login-submit" type="submit">Đăng nhập <span aria-hidden="true">→</span></button></form><div class="login-note">🔒 Chỉ tài khoản được cấp quyền mới xem và cập nhật dữ liệu</div><button type="button" class="ndk-back-home" onclick="ndkNavigate('home')">← Quay về trang chủ</button></div></section><div id="error" class="notice hidden"></div><section id="app" class="hidden"><div class="sectionhead"><div><span class="eyebrow">TRUNG TÂM ĐIỀU HÀNH</span><h2>Tổng quan nhà Đại đoàn kết</h2><p class="muted">Quản lý hồ sơ, nguồn kinh phí và tiến độ trên một nền tảng.</p></div><span class="live">● Hệ thống trực tuyến</span></div><div class="stats"><div class="card"><span class="muted">Tổng hồ sơ</span><b id="sTotal">0</b></div><div class="card"><span class="muted">Đang thi công</span><b id="sBuild">0</b></div><div class="card"><span class="muted">Đã bàn giao</span><b id="sDone">0</b></div><div class="card"><span class="muted">Tổng kinh phí</span><b id="sMoney">0</b></div></div>
 <nav><button id="addBtn" class="hidden" onclick="newRecord()">+ Thêm hồ sơ</button><button class="alt" onclick="downloadCsv()">Xuất CSV</button><button id="usersBtn" class="alt hidden" onclick="showUsers()">👥 Quản lý tài khoản</button><button id="auditBtn" class="alt hidden" onclick="showAudit()">Nhật ký</button><button id="foldersBtn" class="alt hidden" onclick="showFolders()">📁 Thư mục 102 đơn vị</button><button class="alt" onclick="showSummary()">📊 Thống kê đơn vị</button></nav>
 <section id="adminZone" class="adminzone hidden"><div class="eyebrow">KHÔNG GIAN QUẢN TRỊ</div><h2>Trung tâm quản trị hệ thống</h2><p class="muted">Quản lý tài khoản, phê duyệt, nhật ký và sao lưu theo quyền.</p><div class="adminstats"><div>Tài khoản <b id="adminUsers">—</b></div><div>Đơn vị <b id="adminUnits">—</b></div><div>Chờ phê duyệt <b id="adminPending">—</b></div></div><div class="adminactions"><button onclick="showPending()">Hồ sơ chờ duyệt</button><button class="alt" onclick="showUsers()">Quản lý tài khoản</button><button class="alt" onclick="showAudit()">Nhật ký</button><button id="backupBtn" class="alt hidden" onclick="backupNow()">Sao lưu ngay</button><button class="alt" onclick="showV34Settings()">⚙️ Giao diện & mật khẩu</button></div></section>
 <div class="panel" id="recordsPanel"><div class="ndk-records-head"><div><span class="ndk-records-kicker">QUẢN LÝ HỒ SƠ</span><h3>Tiếp nhận & tra cứu Nhà Đại đoàn kết</h3><p>Thêm hồ sơ mới, tìm kiếm và cập nhật hồ sơ đã có theo phân quyền.</p></div><button id="ndkQuickAdd" type="button" onclick="newRecord()">＋ Tiếp nhận hồ sơ</button></div><div class="toolbar"><label>Đơn vị<select id="filterUnit" onchange="load(1)"></select></label><label>Trạng thái<select id="filterStatus" onchange="load(1)"><option value="">Tất cả trạng thái</option></select></label><label>Tìm kiếm<input id="filterTerm" placeholder="Mã, họ tên, địa chỉ" onkeydown="if(event.key==='Enter')load(1)"></label><button class="alt" onclick="load(1)">Tìm / Làm mới</button></div><div class="scroll"><table><thead><tr><th>Mã</th><th>Đơn vị</th><th>Chủ hộ</th><th>Đối tượng</th><th>Kinh phí</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="rows"><tr><td colspan="7">Đang tải…</td></tr></tbody></table></div><div class="pager"><span id="count"></span><button class="alt" id="prev" onclick="load(state.page-1)">Trước</button><button class="alt" id="next" onclick="load(state.page+1)">Sau</button></div></div></section><footer class="credit">Hệ thống quản lý Nhà Đại đoàn kết – Ủy ban MTTQ Việt Nam tỉnh An Giang<br>Thiết kế và phát triển: <strong>Vũ Duy Khánh</strong> · V3.4</footer></main>
@@ -212,20 +225,22 @@ function bridgeRequest(action, opts={}) {
 }
 function call(fn,...args){return bridgeRequest('rpc',{method:fn,args,token:sessionToken});}
 
+let ndkRequestedArea='records';
+function ndkAuthorizedAdmin(){return !!(state.me&&['SUPER_ADMIN','PROVINCE_ADMIN'].includes(state.me.role));}
 function ndkSwitchScreen(screen){
  const authed=!!state.me;
- const showLogin=screen==='login'&&!authed;
- $('ndkWelcome').classList.toggle('hidden',screen!=='home'||authed);
- $('login').classList.toggle('hidden',!showLogin);
+ $('ndkWelcome').classList.toggle('hidden',authed||screen!=='home');
+ $('login').classList.toggle('hidden',authed||screen!=='login');
  $('app').classList.toggle('hidden',!authed);
  document.querySelectorAll('.ndk-tabs button').forEach(b=>{
-  const current=authed?(screen==='home'?'records':screen):screen;
-  if(b.dataset.view===current)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
+  if(b.dataset.view===(authed?screen:ndkRequestedArea)&&screen!=='home')b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
  });
- if(showLogin){setTimeout(()=>{$('loginUsername').focus({preventScroll:true});},0);}
-}
-function ndkShowGuide(){
- const el=$('ndkFeatureList');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+ if(screen==='login'&&!authed){
+  $('ndkLoginKicker').textContent=ndkRequestedArea==='admin'?'DÀNH CHO QUẢN TRỊ VIÊN':'DÀNH CHO CÁN BỘ TIẾP NHẬN';
+  $('ndkLoginIntro').textContent=ndkRequestedArea==='admin'?'Đăng nhập bằng tài khoản quản trị do hệ thống cấp.':'Đăng nhập bằng tài khoản, mật khẩu được cấp để xử lý hồ sơ thuộc đơn vị của bạn.';
+  $('loginHeading').textContent=ndkRequestedArea==='admin'?'Đăng nhập quản trị':'Đăng nhập tiếp nhận hồ sơ';
+  $('loginUsername').focus({preventScroll:true});
+ }
 }
 function renderLogin(){
  $('logoutBtn').classList.add('hidden');$('who').textContent='Chưa xác minh';
@@ -241,7 +256,7 @@ async function logout(){if(sessionToken){bridgeRequest('logout',{token:sessionTo
 }
 function notice(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',5000)}function error(e){notice(e.message||String(e));}
 function option(select,value,label){const o=document.createElement('option');o.value=value;o.textContent=label;select.appendChild(o)}
-async function init(){if(!sessionToken){renderLogin();return;}try{const b=await call('getBootstrap');state.me=b.user;state.units=b.units;state.statuses=b.statuses;$('who').textContent=b.user.email+' · '+b.user.role;const canEdit=['SUPER_ADMIN','PROVINCE_ADMIN','UNIT_EDITOR'].includes(b.user.role);$('addBtn').classList.toggle('hidden',!canEdit);$('ndkQuickAdd').classList.toggle('hidden',!canEdit);$('usersBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));$('auditBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));$('foldersBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));option($('filterUnit'),'','Tất cả đơn vị được phép');b.units.forEach(x=>{option($('filterUnit'),x,x);option($('donVi'),x,x)});b.statuses.forEach(x=>{option($('filterStatus'),x,x);option($('trangThai'),x,x)});$('app').classList.remove('hidden');$('login').classList.add('hidden');$('ndkWelcome').classList.add('hidden');$('logoutBtn').classList.remove('hidden');if(b.isAdmin){$('adminZone').classList.remove('hidden');if(b.user.role==='SUPER_ADMIN')$('backupBtn').classList.remove('hidden');refreshAdmin();}await load(1);v34LoadUiSettings();}catch(e){$('error').textContent=e.message;$('error').classList.remove('hidden');$('loginStatus').textContent='Không đăng nhập được: '+e.message;renderLogin();}}
+async function init(){if(!sessionToken){renderLogin();return;}try{const b=await call('getBootstrap');state.me=b.user;state.units=b.units;state.statuses=b.statuses;$('who').textContent=b.user.email+' · '+b.user.role;const canEdit=['SUPER_ADMIN','PROVINCE_ADMIN','UNIT_EDITOR'].includes(b.user.role);$('addBtn').classList.toggle('hidden',!canEdit);$('ndkQuickAdd').classList.toggle('hidden',!canEdit);$('usersBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));$('auditBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));$('foldersBtn').classList.toggle('hidden',!['SUPER_ADMIN','PROVINCE_ADMIN'].includes(b.user.role));option($('filterUnit'),'','Tất cả đơn vị được phép');b.units.forEach(x=>{option($('filterUnit'),x,x);option($('donVi'),x,x)});b.statuses.forEach(x=>{option($('filterStatus'),x,x);option($('trangThai'),x,x)});$('app').classList.remove('hidden');$('login').classList.add('hidden');$('ndkWelcome').classList.add('hidden');$('logoutBtn').classList.remove('hidden');if(b.isAdmin){$('adminZone').classList.remove('hidden');if(b.user.role==='SUPER_ADMIN')$('backupBtn').classList.remove('hidden');refreshAdmin();}await load(1);v34LoadUiSettings();if(ndkRequestedArea==='admin'&&!ndkAuthorizedAdmin())notice('Tài khoản không có quyền quản trị; đã chuyển sang khu vực tiếp nhận hồ sơ.');ndkNavigate(ndkAuthorizedAdmin()?ndkRequestedArea:'records');}catch(e){$('error').textContent=e.message;$('error').classList.remove('hidden');$('loginStatus').textContent='Không đăng nhập được: '+e.message;renderLogin();}}
 function query(){return {unit:$('filterUnit').value,status:$('filterStatus').value,term:$('filterTerm').value,page:state.page}}
 async function load(page){state.page=Math.max(1,page);try{const r=await call('listRecords',query());state.total=r.total;$('sTotal').textContent=r.stats.total;$('sBuild').textContent=r.stats.status['Đang thi công']||0;$('sDone').textContent=r.stats.status['Đã nghiệm thu, bàn giao']||0;$('sMoney').textContent=money(r.stats.amount);$('rows').replaceChildren();if(!r.records.length){const tr=$('rows').insertRow(),td=tr.insertCell();td.colSpan=7;td.textContent='Không có hồ sơ phù hợp.';}r.records.forEach(x=>{const tr=$('rows').insertRow();[x.maHoSo,x.donVi,x.hoTen,x.doiTuong,money(x.tongKinhPhi),x.trangThai].forEach(v=>{const td=tr.insertCell();td.textContent=v||''});const td=tr.insertCell(),b=document.createElement('button');b.className='alt';b.textContent='Xem / Sửa';b.onclick=()=>openRecord(x.maHoSo);td.appendChild(b)});$('count').textContent=`${r.total} hồ sơ · trang ${r.page}`;$('prev').disabled=state.page<=1;$('next').disabled=state.page*r.pageSize>=r.total;}catch(e){error(e)}}
 function closeDialog(){$('dialog').classList.add('hidden')}
@@ -365,21 +380,24 @@ async function v342ResetAccountPassword(){
 }
 
 function ndkNavigate(view){
+ if(view==='home'){if(!state.me){ndkSwitchScreen('home');window.scrollTo({top:0,behavior:'smooth'});}else ndkNavigate('records');return;}
+ if(view!=='admin'&&view!=='records')view='records';
  if(!state.me){
-  ndkSwitchScreen(view==='home'?'home':'login');
-  if(view!=='home')$('login').scrollIntoView({behavior:'smooth',block:'start'});
-  else window.scrollTo({top:0,behavior:'smooth'});
+  ndkRequestedArea=view;
+  ndkSwitchScreen('login');
+  $('login').scrollIntoView({behavior:'smooth',block:'start'});
   return;
  }
- if(view==='login'||view==='home')view='records';
+ if(view==='admin'&&!ndkAuthorizedAdmin()){
+  notice('Tài khoản này không có quyền quản trị. Hãy sử dụng mục Tiếp nhận hồ sơ.');
+  view='records';
+ }
  ndkSwitchScreen(view);
  if(view==='records'){
   $('recordsPanel').scrollIntoView({behavior:'smooth',block:'start'});
   const field=$('filterTerm');if(field)field.focus({preventScroll:true});
  }else if(view==='admin'){
-  const el=$('adminZone');
-  if(el&&!el.classList.contains('hidden'))el.scrollIntoView({behavior:'smooth',block:'start'});
-  else{notice('Chỉ tài khoản quản trị mới được sử dụng chức năng này.');$('recordsPanel').scrollIntoView({behavior:'smooth',block:'start'});}
+  const el=$('adminZone');if(el&&!el.classList.contains('hidden'))el.scrollIntoView({behavior:'smooth',block:'start'});
  }
 }
 </script></body></html>
