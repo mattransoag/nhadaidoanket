@@ -1,6 +1,8 @@
 /**
  * NDK BRIDGE – GitHub Pages -> Apps Script -> Sheets/Drive
  * Copy into an existing Apps Script project as Bridge.gs, then redeploy Web App.
+ * The HtmlService iframe may be nested by Google; send replies to window.top.
+ * The ping action does not access sensitive data.
  * Keep existing Code.gs / authRpc / v332Login / v332Logout unchanged.
  * WARNING: internal password/session implementation in existing project is a PILOT.
  * Do not use with real citizens' records before security review and permission testing.
@@ -17,7 +19,9 @@ function doPost(e) {
     if (!req || !/^[a-zA-Z0-9_-]{12,90}$/.test(String(req.id || ''))) throw new Error('Mã yêu cầu không hợp lệ.');
     var action = String(req.action || '');
     var result;
-    if (action === 'login') {
+    if (action === 'ping') {
+      result = {status: 'ok', service: 'NDK_GAS_BRIDGE', version: 2};
+    } else if (action === 'login') {
       result = v332Login(req.username, req.password);
     } else if (action === 'logout') {
       result = v332Logout(req.token);
@@ -49,7 +53,7 @@ function ndkBridgeReply_(packet) {
     .replace(/\u2028/g, '\\u2028')
     .replace(/\u2029/g, '\\u2029');
   var html = '<!doctype html><html><head><meta charset="utf-8"></head><body>' +
-    '<script>window.parent.postMessage(' + json + ',' + JSON.stringify(NDK_BRIDGE_ORIGIN) + ');<\/script>' +
+    '<script>window.top.postMessage(' + json + ',' + JSON.stringify(NDK_BRIDGE_ORIGIN) + ');<\/script>' +
     '</body></html>';
   return HtmlService.createHtmlOutput(html).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
