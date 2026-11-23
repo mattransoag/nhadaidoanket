@@ -212,10 +212,47 @@ body{font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;text-re
 .ndk-choice-description{font-size:14px}
 .ndk-portal-choice{min-height:220px}
 }
+
+/* Typography refinement 2026-11-23 – consistent Roboto and natural Vietnamese line breaks */
+:root,html,body,body *,button,input,select,textarea,option,button::before,button::after{
+ font-family:"Roboto",Arial,sans-serif!important;
+ font-optical-sizing:auto;
+ font-synthesis:none;
+}
+.ndk-portal-top{max-width:960px;padding:24px 16px 28px}
+.ndk-portal-top h2{
+ font-family:"Roboto",Arial,sans-serif!important;
+ font-size:clamp(27px,2.7vw,37px)!important;
+ font-weight:700!important;
+ line-height:1.35!important;
+ letter-spacing:0!important;
+ text-wrap:balance;
+ max-width:900px;
+ margin:13px auto 16px;
+}
+.ndk-headline-line{display:block;font-family:inherit!important;font-weight:700!important;line-height:inherit}
+.ndk-headline-accent{color:#ae292c}
+.ndk-portal-top p{font-size:15px!important;font-weight:400!important;line-height:1.7!important;max-width:730px}
+.ndk-portal-kicker{font-size:12px!important;letter-spacing:.055em!important;font-weight:700!important}
+.ndk-portal-choice .ndk-choice-title{font-family:"Roboto",Arial,sans-serif!important;font-size:clamp(22px,2vw,27px)!important;font-weight:700!important;line-height:1.35!important;letter-spacing:0!important;margin-top:19px}
+.ndk-portal-choice .ndk-choice-description{font-size:15px!important;line-height:1.7!important;font-weight:400!important;letter-spacing:0!important}
+.ndk-portal-choice .ndk-choice-footer{font-size:14px!important;font-weight:600!important;letter-spacing:0!important}
+.ndk-portal-choice .ndk-choice-number{font-size:12px!important;font-weight:700!important;letter-spacing:.03em!important}
+.ndk-portal-note{font-size:13px!important;line-height:1.65!important;font-weight:400!important}
+.official-title{font-size:clamp(22px,2.7vw,39px)!important;line-height:1.3!important;font-weight:800!important}
+.official-subtitle{font-size:clamp(16px,1.9vw,26px)!important;line-height:1.45!important;font-weight:700!important}
+@media (min-width:740px){.ndk-headline-accent{white-space:nowrap}}
+@media (max-width:739px){
+ .ndk-portal-top{padding:15px 6px 23px}
+ .ndk-portal-top h2{font-size:clamp(24px,5.9vw,32px)!important;line-height:1.4!important}
+ .ndk-portal-choice .ndk-choice-title{font-size:23px!important}
+ .ndk-portal-choice .ndk-choice-description{font-size:14px!important}
+ .ndk-headline-accent{white-space:normal;text-wrap:balance}
+}
 </style></head><body>
 <header class="official-hero" role="banner"><div class="official-hero-inner"><img id="brandLogo" class="official-logo brand-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bi%E1%BB%83u%20tr%C6%B0ng%20M%E1%BA%B7t%20tr%E1%BA%ADn%20T%E1%BB%95%20qu%E1%BB%91c%20Vi%E1%BB%87t%20Nam.svg" alt="Biểu trưng Mặt trận Tổ quốc Việt Nam"><h1 class="official-title">ỦY BAN MẶT TRẬN TỔ QUỐC VIỆT NAM<span>TỈNH AN GIANG</span></h1><p class="official-subtitle">HỆ THỐNG QUẢN LÝ NHÀ ĐẠI ĐOÀN KẾT</p></div></header><main class="shell">
 <section id="ndkWelcome" class="ndk-portal" aria-labelledby="ndkWelcomeHeading">
-<div class="ndk-portal-top"><span class="ndk-portal-kicker">NỀN TẢNG QUẢN LÝ AN SINH XÃ HỘI</span><h2 id="ndkWelcomeHeading">Chung tay xây dựng <em>mái ấm đại đoàn kết</em></h2><p>Một hệ thống thống nhất để quản lý hồ sơ hỗ trợ nhà ở, nguồn kinh phí và tiến độ thực hiện trên địa bàn tỉnh An Giang.</p></div>
+<div class="ndk-portal-top"><span class="ndk-portal-kicker">NỀN TẢNG QUẢN LÝ AN SINH XÃ HỘI</span><h2 id="ndkWelcomeHeading"><span class="ndk-headline-line">Chung tay xây dựng</span><span class="ndk-headline-line ndk-headline-accent">mái ấm đại đoàn kết</span></h2><p>Một hệ thống thống nhất để quản lý hồ sơ hỗ trợ nhà ở, nguồn kinh phí và tiến độ thực hiện trên địa bàn tỉnh An Giang.</p></div>
 <div class="ndk-portal-choices">
 <button class="ndk-portal-choice ndk-portal-admin" type="button" onclick="ndkNavigate('admin')"><span class="ndk-choice-top"><span class="ndk-choice-icon" aria-hidden="true">⚙</span><span class="ndk-choice-number">01 / QUẢN TRỊ</span></span><span class="ndk-choice-title">Quản trị hệ thống</span><span class="ndk-choice-description">Cấp tài khoản, phân quyền theo đơn vị, phê duyệt hồ sơ, thống kê và theo dõi hoạt động.</span><span class="ndk-choice-footer">Dành cho quản trị viên <span class="ndk-choice-arrow" aria-hidden="true">↗</span></span></button>
 <button class="ndk-portal-choice ndk-portal-records" type="button" onclick="ndkNavigate('records')"><span class="ndk-choice-top"><span class="ndk-choice-icon" aria-hidden="true">⌂</span><span class="ndk-choice-number">02 / HỒ SƠ</span></span><span class="ndk-choice-title">Tiếp nhận hồ sơ</span><span class="ndk-choice-description">Đăng nhập bằng tài khoản được cấp để lập mới, tra cứu, cập nhật hồ sơ và ảnh minh chứng.</span><span class="ndk-choice-footer">Dành cho cán bộ được cấp quyền <span class="ndk-choice-arrow" aria-hidden="true">↗</span></span></button>
