@@ -59,7 +59,7 @@ const NDK_BRIDGE_URL = 'https://script.google.com/macros/s/AKfycbyMEJbrJTUrwtst0
 const ndkPending = new Map();
 window.addEventListener('message', e => {
   // GAS HtmlService runs on script.googleusercontent.com, never trust other sources.
-  if (!/^https:\/\/(?:[a-z0-9-]+\.)?script\.googleusercontent\.com$/i.test(e.origin) &&
+  if (!/^https:\/\/(?:script\.googleusercontent\.com|[a-z0-9-]+-script\.googleusercontent\.com)$/i.test(e.origin) &&
       e.origin !== 'https://script.google.com') return;
   const msg=e.data;
   if (!msg || msg.ndkBridge !== true || typeof msg.id !== 'string') return;
@@ -91,8 +91,7 @@ function bridgeRequest(action, opts={}) {
       reject(new Error('Kết nối GAS chưa phản hồi. Hãy kiểm tra Bridge.gs, quyền Web App và phiên bản triển khai.'));
     },45000);
     ndkPending.set(id,{resolve,reject,timer,iframe});
-    try {form.submit();} catch(err) {clearTimeout(timer);ndkPending.delete(id);iframe.remove();reject(err);}
-    finally {form.remove();}
+    try {form.submit(); setTimeout(()=>form.remove(),1000);} catch(err) {clearTimeout(timer);ndkPending.delete(id);iframe.remove();form.remove();reject(err);}
   });
 }
 function call(fn,...args){return bridgeRequest('rpc',{method:fn,args,token:sessionToken});}
